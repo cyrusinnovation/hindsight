@@ -1,6 +1,8 @@
 <div ng-controller="RetrospectivesCtrl as retroCtrl" class="retrospectives">
   <ul>
-    <li ng-repeat="retro in retros">{{retro.name}}</li>
+    <li ng-repeat="retro in retros">
+      <span>{{retro.name}}</span> at <span>{{retro.date}}</span>
+    </li>
   </ul>
 
   <form name="new-retro" ng-submit="retroCtrl.addRetro()">
