@@ -8,7 +8,7 @@ npm install
 bower install
 
 You may need to install Ruby and Compass (gem install compass).  
-If you have them, confirm things are working by running: 
+If you have them, confirm things are working by running:   
 grunt test  
 grunt serve  
 
