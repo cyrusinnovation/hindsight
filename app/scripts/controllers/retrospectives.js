@@ -2,9 +2,12 @@
 
 angular.module('hindsightApp')
   .controller('RetrospectivesCtrl', function ($scope) {
-    $scope.retros = [
-      'Team Retro 1',
-      'Team Retro 2',
-      'Team Retro 3'
-    ];
+    $scope.retros = [];
+    $scope.newRetro = {name: '', date: ''};
+
+    this.addRetro = function(){
+      $scope.retros.push($scope.newRetro);
+      $scope.newRetro = {name: '', date: ''};
+    };
+
   });

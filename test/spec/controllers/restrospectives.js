@@ -16,7 +16,4 @@ describe('Controller: RetrospectivesCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.retros.length).toBe(3);
-  });
 });

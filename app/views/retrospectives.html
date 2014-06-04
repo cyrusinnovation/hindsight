@@ -1,4 +1,13 @@
-<p>This is the retrospectives view.</p>
-<ul>
-  <li ng-repeat="retro in retros">{{retro}}</li>
-</ul>
+<div ng-controller="RetrospectivesCtrl as retroCtrl" class="retrospectives">
+  <ul>
+    <li ng-repeat="retro in retros">{{retro.name}}</li>
+  </ul>
+
+  <form name="new-retro" ng-submit="retroCtrl.addRetro()">
+    <input ng-model="newRetro.name" />
+    <input ng-model="newRetro.date" />
+    <button id="new-retro-submit" type="submit" class="btn btn-primary">Create</button>
+  </form>
+
+</div>
+
