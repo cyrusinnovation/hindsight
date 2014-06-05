@@ -3,7 +3,6 @@
 hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
   $scope.startTime = {};
-  $scope.firstAlarm = {};
 
   this.updateTime = function() {
     var message = document.getElementById('retro-time');
@@ -36,7 +35,7 @@ hindsightApp.directive("timer", function() {
         timerControl.text("Pause Timer");
         timerControl.removeClass("paused");
         timerControl.addClass("playing");
-      } else if(hasClass("playing")){
+      } else if(timerControl.hasClass("playing")){
         timerControl.text("Start Timer");
         timerControl.removeClass("playing");
         timerControl.addClass("paused");

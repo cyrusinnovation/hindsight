@@ -21,7 +21,13 @@ describe('Controller: RetrospectiveCtrl', function () {
   });
 
   it('should set the first alarm when the timer is started', function () {
+    this.clock = sinon.useFakeTimers(0, "Date");
+
     RetrospectiveCtrl.startTimer();
-    expect(scope.firstAlarm).not.toBe(null);
+
+    expect(scope.firstAlarm).toBeDefined();
+    expect(scope.firstAlarm.getTime()).toBe(30*60*1000);
+
+    this.clock.restore();
   });
 });
