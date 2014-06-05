@@ -1,0 +1,11 @@
+<div ng-controller="RetrospectiveCtrl as rCtrl">
+  <h1>{{ retro.name }}</h1>
+  <h3>{{ retro.date }}</h3>
+
+  <timer>
+    <div id="retro-time">30 minutes and 0 seconds</div>
+    <button id="timer-control" ng-click="rCtrl.startTimer()" class="btn btn-primary paused">Start Timer</button>
+  </timer>
+
+</div>
+

@@ -15,6 +15,10 @@ hindsightApp.config(function ($routeProvider) {
         templateUrl: 'views/retrospectives.html',
         controller: 'RetrospectivesCtrl'
       })
+      .when('/retrospective', {
+        templateUrl: 'views/retrospective.html',
+        controller: 'RetrospectiveCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
