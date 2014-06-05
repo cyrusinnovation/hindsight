@@ -20,27 +20,38 @@ describe('Controller: RetrospectiveCtrl', function () {
     expect(scope.retro.name).toBe("Team Retro 1");
   });
 
-  it('should set the first alarm when the timer is started', function () {
-    this.clock = sinon.useFakeTimers(0, "Date");
+  describe("with standardized date", function(){
+    beforeEach(function(){
+      this.clock = sinon.useFakeTimers(0, "Date");
+    });
+    afterEach(function(){
+      this.clock.restore();
+    });
+    it('should set the first alarm when the timer is started', function () {
+      RetrospectiveCtrl.startTimer();
 
-    RetrospectiveCtrl.startTimer();
+      expect(scope.firstAlarm).toBeDefined();
+      expect(scope.firstAlarm.getTime()).toBe(30*60*1000);
+    });
 
-    expect(scope.firstAlarm).toBeDefined();
-    expect(scope.firstAlarm.getTime()).toBe(30*60*1000);
+    it('should update scope message with the time', function () {
+      RetrospectiveCtrl.startTimer();
+      scope.updateTime();
+      expect(scope.message).toBe("30 minutes and 00 seconds");
 
-    this.clock.restore();
-  });
+      this.clock.tick(1);
+      scope.updateTime();
+      expect(scope.message).toBe("29 minutes and 59 seconds");
+    });
+    it('should stop the timer when paused', function(){
+      RetrospectiveCtrl.startTimer();
+      this.clock.tick(1);
+      scope.updateTime();
+      expect(scope.message).toBe("29 minutes and 59 seconds");
 
-  it('should update scope message with the time', function () {
-    this.clock = sinon.useFakeTimers(0, "Date");
-    RetrospectiveCtrl.startTimer();
-    scope.updateTime();
-    expect(scope.message).toBe("30 minutes and 00 seconds");
-
-    this.clock.tick(1);
-    scope.updateTime();
-    expect(scope.message).toBe("29 minutes and 59 seconds");
-
-    this.clock.restore();
+      RetrospectiveCtrl.pauseTimer();
+      this.clock.tick(30000);
+      expect(scope.message).toBe("29 minutes and 59 seconds");
+    });
   });
 });
