@@ -3,9 +3,7 @@
 hindsightApp.controller('RetrospectivesCtrl', function ($scope, $filter) {
     $scope.retros = [];
     $scope.newRetro = {name: '', date: ''};
-    var date = new Date();
-    $scope.minDate = $filter('date')(date, "yyyy-MM-dd");
-
+    $scope.minDate = $filter('date')(new Date(), "yyyy-MM-dd");
 
     this.addRetro = function(){
       $scope.retros.push($scope.newRetro);

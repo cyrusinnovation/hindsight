@@ -6,15 +6,17 @@ describe('create retrospective', function() {
     name.sendKeys('Team Retro numero uno');
 
     var date = element(by.model('newRetro.date'));
-    date.sendKeys('06/12/15 2:00pm');
+    date.sendKeys('06/12/2015');
 
     $('#new-retro-submit').click();
+
+//    var retro = element(by.binding('retro'));
 
     var retroName = element(by.binding('retro.name'));
     expect(retroName.getText()).toEqual('Team Retro numero uno');
 
     var retroDate = element(by.binding('retro.date'));
-    expect(retroDate.getText()).toEqual('06/12/15 2:00pm');
+    expect(retroDate.getText()).toEqual('2015-06-12');
 
   });
 });

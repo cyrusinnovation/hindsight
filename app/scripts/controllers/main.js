@@ -1,9 +1,3 @@
 'use strict';
 
-hindsightApp.controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+hindsightApp.controller('MainCtrl', function ($scope) {});
