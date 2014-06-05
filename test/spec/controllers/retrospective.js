@@ -30,4 +30,17 @@ describe('Controller: RetrospectiveCtrl', function () {
 
     this.clock.restore();
   });
+
+  it('should update scope message with the time', function () {
+    this.clock = sinon.useFakeTimers(0, "Date");
+    RetrospectiveCtrl.startTimer();
+    scope.updateTime();
+    expect(scope.message).toBe("30 minutes and 00 seconds");
+
+    this.clock.tick(1);
+    scope.updateTime();
+    expect(scope.message).toBe("29 minutes and 59 seconds");
+
+    this.clock.restore();
+  });
 });

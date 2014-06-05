@@ -3,8 +3,9 @@
 hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
   $scope.startTime = {};
+  $scope.message = "30 minutes and 00 seconds";
 
-  this.updateTime = function() {
+  $scope.updateTime = function() {
     var message = document.getElementById('retro-time');
     var duration = $scope.firstAlarm - new Date();
     var seconds = parseInt((duration/1000)%60);
@@ -12,7 +13,7 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
 
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
-    message.innerHTML = minutes + " minutes and " + seconds + " seconds";
+    $scope.message = minutes + " minutes and " + seconds + " seconds";
   };
 
   this.startTimer = function() {
@@ -20,7 +21,11 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
     $scope.firstAlarm = $scope.startTime;
     $scope.firstAlarm.setMinutes($scope.startTime.getMinutes() + 30);
 
-    setInterval(this.updateTime, 100);
+    setInterval(function () {
+        $scope.$apply(function () {
+          $scope.updateTime();
+        });
+      }, 100);
   };
 
 });
