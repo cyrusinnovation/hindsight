@@ -4,6 +4,7 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
   $scope.startTime = {};
   $scope.message = "30 minutes and 00 seconds";
+  $scope.started = false;
 
   $scope.updateTime = function() {
     var duration = $scope.firstAlarm - new Date();
@@ -25,6 +26,14 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
           $scope.updateTime();
         });
       }, 100);
+  };
+
+  this.clickTimer = function(){
+    if($scope.started){
+      this.pauseTimer();
+    }else{
+      this.startTimer();
+    }
   };
 
   this.pauseTimer = function(){

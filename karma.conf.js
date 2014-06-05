@@ -25,8 +25,8 @@ module.exports = function(config) {
       'app/bower_components/es5-shim/es5-sham.js',
       'app/bower_components/es5-shim/es5-shim.js',
       'app/bower_components/json3/lib/json3.js',
-      'app/bower_components/sinon/lib/sinon.js',
-      'app/bower_components/sinon/lib/sinon/util/fake_timers.js',
+      'app/bower_components/sinonjs/sinon.js',
+      'app/bower_components/jasmine-sinon/index.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
     ],

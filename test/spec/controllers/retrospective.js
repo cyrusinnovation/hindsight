@@ -54,4 +54,15 @@ describe('Controller: RetrospectiveCtrl', function () {
       expect(scope.message).toBe("29 minutes and 59 seconds");
     });
   });
+//  describe("#clickTimer", function(){
+//    it('should call pause when already started', function(){
+//      var spy = sinon.spy(RetrospectiveCtrl.pauseTimer);
+//      expect(spy).toBeDefined();
+//      scope.started = true;
+//      RetrospectiveCtrl.clickTimer();
+//      expect(spy.calledOnce).toBeTruthy();
+//
+//    });
+//  });
+
 });
