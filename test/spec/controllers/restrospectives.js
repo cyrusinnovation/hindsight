@@ -16,4 +16,17 @@ describe('Controller: RetrospectivesCtrl', function () {
     });
   }));
 
+  it('should initialize an empty list of retros to the scope', function () {
+    expect(scope.retros.length).toBe(0);
+  });
+
+  it('should initialize a blank new retro', function () {
+    expect(scope.newRetro.name).toBe('');
+  });
+
+  it('should set the min date for the datepicker', function () {
+    var currentDate = new Date().toDateString();
+    var scopeDate = new Date(scope.minDate + " 12:00").toDateString();
+    expect(scopeDate).toEqual(currentDate);
+  });
 });

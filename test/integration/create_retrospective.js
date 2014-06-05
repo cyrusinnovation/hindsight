@@ -10,8 +10,6 @@ describe('create retrospective', function() {
 
     $('#new-retro-submit').click();
 
-//    var retro = element(by.binding('retro'));
-
     var retroName = element(by.binding('retro.name'));
     expect(retroName.getText()).toEqual('Team Retro numero uno');
 
