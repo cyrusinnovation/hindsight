@@ -1,16 +1,14 @@
 'use strict';
 
-angular
-  .module('hindsightApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+var hindsightApp = angular.module('hindsightApp', ['ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute']);
+
+hindsightApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
       .when('/retrospectives', {

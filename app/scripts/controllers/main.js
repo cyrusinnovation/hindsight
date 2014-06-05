@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('hindsightApp')
-  .controller('MainCtrl', function ($scope) {
+hindsightApp.controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

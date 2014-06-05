@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('hindsightApp')
-  .controller('RetrospectivesCtrl', function ($scope, $filter) {
+hindsightApp.controller('RetrospectivesCtrl', function ($scope, $filter) {
     $scope.retros = [];
     $scope.newRetro = {name: '', date: ''};
     var date = new Date();
