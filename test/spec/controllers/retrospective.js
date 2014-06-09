@@ -24,9 +24,11 @@ describe('Controller: RetrospectiveCtrl', function () {
     beforeEach(function(){
       this.clock = sinon.useFakeTimers(0, "Date");
     });
+
     afterEach(function(){
       this.clock.restore();
     });
+
     it('should set the first alarm when the timer is started', function () {
       RetrospectiveCtrl.startTimer();
 
@@ -43,6 +45,7 @@ describe('Controller: RetrospectiveCtrl', function () {
       scope.updateTime();
       expect(scope.message).toBe("29 minutes and 59 seconds");
     });
+
     it('should stop the timer when paused', function(){
       RetrospectiveCtrl.startTimer();
       this.clock.tick(1);
@@ -54,15 +57,27 @@ describe('Controller: RetrospectiveCtrl', function () {
       expect(scope.message).toBe("29 minutes and 59 seconds");
     });
   });
-//  describe("#clickTimer", function(){
-//    it('should call pause when already started', function(){
-//      var spy = sinon.spy(RetrospectiveCtrl.pauseTimer);
-//      expect(spy).toBeDefined();
-//      scope.started = true;
-//      RetrospectiveCtrl.clickTimer();
-//      expect(spy.calledOnce).toBeTruthy();
-//
-//    });
-//  });
+
+  describe("#clickTimer", function(){
+    it('should call pause when already started', function(){
+      var spy = sinon.spy(RetrospectiveCtrl, "pauseTimer");
+
+      scope.started = true;
+      RetrospectiveCtrl.clickTimer();
+      expect(spy.calledOnce).toBeTruthy();
+
+      spy.restore();
+    });
+
+    it('should call start when currently paused', function(){
+      var spy = sinon.spy(RetrospectiveCtrl, "startTimer");
+
+      scope.started = false;
+      RetrospectiveCtrl.clickTimer();
+      expect(spy.calledOnce).toBeTruthy();
+
+      spy.restore();
+    });
+  });
 
 });
