@@ -36,6 +36,13 @@ describe('Controller: RetrospectiveCtrl', function () {
       expect(scope.firstAlarm.getTime()).toBe(30*60*1000);
     });
 
+    it('should set started to true when the timer is started', function () {
+      scope.started = false;
+      RetrospectiveCtrl.startTimer();
+
+      expect(scope.started).toBeTruthy();
+    });
+
     it('should update scope message with the time', function () {
       RetrospectiveCtrl.startTimer();
       scope.updateTime();
@@ -55,6 +62,14 @@ describe('Controller: RetrospectiveCtrl', function () {
       RetrospectiveCtrl.pauseTimer();
       this.clock.tick(30000);
       expect(scope.message).toBe("29 minutes and 59 seconds");
+    });
+
+
+    it('should set started to false when the timer is paused', function () {
+      scope.started = true;
+      RetrospectiveCtrl.pauseTimer();
+
+      expect(scope.started).toBeFalsy();
     });
   });
 

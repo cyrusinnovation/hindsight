@@ -21,11 +21,13 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
     $scope.firstAlarm = $scope.startTime;
     $scope.firstAlarm.setMinutes($scope.startTime.getMinutes() + 30);
 
-    this.timerIntervalId = setInterval(function () {
-        $scope.$apply(function () {
-          $scope.updateTime();
-        });
-      }, 100);
+    $scope.timerIntervalId = setInterval(function () {
+      $scope.$apply(function () {
+        $scope.updateTime();
+      });
+    }, 100);
+
+    $scope.started = true;
   };
 
   this.clickTimer = function(){
@@ -37,7 +39,8 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   };
 
   this.pauseTimer = function(){
-    clearInterval(this.timerIntervalId);
+    clearInterval($scope.timerIntervalId);
+    $scope.started = false;
   };
 
 });
