@@ -5,27 +5,39 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.startTime = {};
   $scope.message = "30 minutes and 00 seconds";
   $scope.started = false;
+  $scope.defaultTimeMs = 30*60*1000;
+
+  $scope.stopTimer = function(){
+    clearInterval($scope.timerIntervalId);
+    $scope.started = false;
+  };
 
   $scope.updateTime = function() {
     var duration = $scope.firstAlarm - new Date();
-    var seconds = parseInt((duration/1000)%60);
-    var minutes = parseInt((duration/(1000*60))%60);
 
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-    $scope.message = minutes + " minutes and " + seconds + " seconds";
+    if(duration <= 0) {
+      $scope.stopTimer();
+      alert("Time is up!");
+    } else {
+      var seconds = parseInt((duration/1000)%60);
+      var minutes = parseInt((duration/(1000*60))%60);
+
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+      $scope.message = minutes + " minutes and " + seconds + " seconds";
+    }
   };
 
   this.startTimer = function() {
     $scope.startTime = new Date();
     $scope.firstAlarm = $scope.startTime;
-    $scope.firstAlarm.setMinutes($scope.startTime.getMinutes() + 30);
+    $scope.firstAlarm.setTime($scope.startTime.getTime() + $scope.defaultTimeMs);
 
     $scope.timerIntervalId = setInterval(function () {
       $scope.$apply(function () {
         $scope.updateTime();
       });
-    }, 100);
+    }, 10);
 
     $scope.started = true;
   };
@@ -39,9 +51,9 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   };
 
   this.pauseTimer = function(){
-    clearInterval($scope.timerIntervalId);
-    $scope.started = false;
+    $scope.stopTimer();
   };
+
 
 });
 
