@@ -12,7 +12,7 @@ describe('Controller: RetrospectiveCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     RetrospectiveCtrl = $controller('RetrospectiveCtrl', {
-      $scope: scope, $element: element, $attrs: attrs
+      $scope: scope
     });
   }));
 
@@ -36,15 +36,16 @@ describe('Controller: RetrospectiveCtrl', function () {
     describe('with a timer', function() {
       beforeEach(function () {
         var tpl =
-          '<timer>' +
+          '<timer duration="30">' +
           '<div id="retro-time">{{message}}</div>' +
           '<button id="timer-control" ng-click="clickTimer()" class="btn btn-primary paused">Start Timer</button>' +
           '</timer>';
         element = angular.element(tpl);
         $compile(element)(scope);
-        scope.$digest();
+//        scope.$digest();
         timer = element.find('timer');
       });
+
       afterEach(function() {
         element.remove();
       });
@@ -52,7 +53,7 @@ describe('Controller: RetrospectiveCtrl', function () {
 
       it('should set started to true when the timer is started', function () {
         scope.started = false;
-        timer.scope().startTimer();
+        scope.startTimer();
 
         expect(timer.scope().started).toBe(true);
       });

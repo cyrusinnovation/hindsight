@@ -2,20 +2,15 @@
 
 hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
-
 });
 
 
-
 hindsightApp.directive("timer", function() {
-
   var linkFunction = function(scope, element, attributes) {
-
-    scope.startTime = {};
-    scope.message = "30 minutes and 00 seconds";
     scope.started = false;
-    scope.timerDurationMs = 0;
-    var defaultTimerDurationMs = 30*60*1000;
+    var defaultTimerDurationMs = parseInt(scope.duration)*60*1000;
+    scope.timerDurationMs = defaultTimerDurationMs;
+    scope.message = (defaultTimerDurationMs/60/1000) + " minutes and 00 seconds";
 
     scope.updateTime = function() {
       var duration = scope.currentTimerDuration();
@@ -36,7 +31,7 @@ hindsightApp.directive("timer", function() {
     scope.startTimer = function() {
       scope.startTime = new Date();
       scope.firstAlarm = scope.startTime;
-      scope.firstAlarm.setTime(scope.startTime.getTime() + defaultTimerDurationMs);
+      scope.firstAlarm.setTime(scope.startTime.getTime() + scope.timerDurationMs);
 
       scope.timerIntervalId = setInterval(function() {
         scope.$apply(function() {
@@ -76,8 +71,12 @@ hindsightApp.directive("timer", function() {
     });
   };
 
+
   return {
     restrict: "E",
+    scope: {
+      duration: '='
+    },
     templateUrl: 'templates/timer.html',
     link: linkFunction
   };
