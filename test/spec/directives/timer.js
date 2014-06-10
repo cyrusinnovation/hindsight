@@ -13,11 +13,15 @@ describe('timer', function() {
     expect(element.html()).toContain("30 minutes");
   });
 
-  it('should set started to true when the timer is started', function () {
-    $scope.started = false;
-    $scope.startTimer();
+  it('should save the number of minutes', function () {
+    $scope.$digest();
+    expect(element.isolateScope().duration).toBe(30);
+  });
 
-    expect($scope.started).toBe(true);
+  it('should set started to true when the timer is started', function () {
+    element.isolateScope().started = false;
+    element.isolateScope().startTimer();
+    expect(element.isolateScope().started).toBe(true);
   });
 
 });
