@@ -56,19 +56,19 @@ hindsightApp.directive("timer", function() {
       scope.started = false;
     };
 
-    var timerControl = element.find('#timer-control');
-    $(timerControl).on("click", function() {
-      if(timerControl.hasClass("paused")){
-        timerControl.text("Pause Timer");
-        timerControl.removeClass("paused");
-        timerControl.addClass("playing");
-      } else if(timerControl.hasClass("playing")){
-        timerControl.text("Start Timer");
-        timerControl.removeClass("playing");
-        timerControl.addClass("paused");
-      }
+//    var timerControl = element.find('#timer-control');
+//    $(timerControl).on("click", function() {
+//      if(timerControl.hasClass("paused")){
+//        timerControl.text("Pause Timer");
+//        timerControl.removeClass("paused");
+//        timerControl.addClass("playing");
+//      } else if(timerControl.hasClass("playing")){
+//        timerControl.text("Start Timer");
+//        timerControl.removeClass("playing");
+//        timerControl.addClass("paused");
+//      }
+//    });
 
-    });
   };
 
 
@@ -77,7 +77,8 @@ hindsightApp.directive("timer", function() {
     scope: {
       duration: '='
     },
-    templateUrl: 'templates/timer.html',
+    template: '<div id="retro-time">{{message}}</div>'+
+              '<button id="timer-control" ng-click="clickTimer()" class="btn btn-primary paused">Start Timer</button>',
     link: linkFunction
   };
 });

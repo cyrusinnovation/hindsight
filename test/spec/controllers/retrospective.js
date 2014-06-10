@@ -20,48 +20,6 @@ describe('Controller: RetrospectiveCtrl', function () {
     expect(scope.retro.name).toBe("Team Retro 1");
   });
 
-  describe('timer', function(){
-    var scope, $compile;
-    var element, timer;
-
-    beforeEach(inject(function(_$rootScope_, _$compile_){
-      scope = _$rootScope_;
-      $compile = _$compile_;
-    }));
-
-    afterEach(function () {
-      element = timer = scope = $compile = undefined;
-    });
-
-    describe('with a timer', function() {
-      beforeEach(function () {
-        var tpl =
-          '<timer duration="30">' +
-          '<div id="retro-time">{{message}}</div>' +
-          '<button id="timer-control" ng-click="clickTimer()" class="btn btn-primary paused">Start Timer</button>' +
-          '</timer>';
-        element = angular.element(tpl);
-        $compile(element)(scope);
-//        scope.$digest();
-        timer = element.find('timer');
-      });
-
-      afterEach(function() {
-        element.remove();
-      });
-
-
-      it('should set started to true when the timer is started', function () {
-        scope.started = false;
-        scope.startTimer();
-
-        expect(timer.scope().started).toBe(true);
-      });
-
-
-    });
-
-  });
 
 //  describe("with standardized date", function(){
 //    beforeEach(function(){
