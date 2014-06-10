@@ -6,20 +6,20 @@ var hindsightApp = angular.module('hindsightApp', ['ngCookies',
   'ngRoute']);
 
 hindsightApp.config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'MainCtrl'
-      })
-      .when('/retrospectives', {
-        templateUrl: 'views/retrospectives.html',
-        controller: 'RetrospectivesCtrl'
-      })
-      .when('/retrospective', {
-        templateUrl: 'views/retrospective.html',
-        controller: 'RetrospectiveCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/home.html',
+      controller: 'MainCtrl'
+    })
+    .when('/retrospectives', {
+      templateUrl: 'views/retrospectives.html',
+      controller: 'RetrospectivesCtrl'
+    })
+    .when('/retrospective', {
+      templateUrl: 'views/retrospective.html',
+      controller: 'RetrospectiveCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
