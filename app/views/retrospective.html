@@ -1,11 +1,14 @@
 <div ng-controller="RetrospectiveCtrl as rCtrl">
   <h1>{{ retro.name }}</h1>
-  <h3>{{ retro.date }}</h3>
+  <h2>{{ retro.date }}</h2>
 
-  <timer duration="1"></timer>
-  <timer duration="20"></timer>
-  <timer duration="20"></timer>
-  <timer duration="10"></timer>
+  <div ng-controller="ActivitiesCtrl as aCtrl">
+      <div ng-repeat="activity in activities">
+          <div>
+              <timer activity="activity.name" duration="activity.duration"></timer>
+          </div>
+      </div>
 
+  </div>
 </div>
 

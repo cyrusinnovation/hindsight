@@ -4,6 +4,10 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
   $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
 });
 
+hindsightApp.controller('ActivitiesCtrl', function($scope){
+  $scope.activities=[{name:'Check In', duration:1},{name:'Gather Data', duration:20},{name:'Gain Insights',duration: 20}, {name:'Action Plan', duration:10}]
+
+});
 
 hindsightApp.directive("timer", function() {
   var linkFunction = function(scope, element, attributes) {
@@ -32,7 +36,7 @@ hindsightApp.directive("timer", function() {
 
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
-        scope.message = minutes + " minutes and " + seconds + " seconds";
+        scope.timeDisplay = minutes + " minutes and " + seconds + " seconds";
       }
     };
 
@@ -75,9 +79,11 @@ hindsightApp.directive("timer", function() {
   return {
     restrict: "E",
     scope: {
-      duration: '='
+      duration: '=',
+      activity: '='
     },
-    template: '<div id="retro-time">{{message}}</div>'+
+    template: '<div id="activity-name">{{activity}}</div>' +
+              '<div id="retro-time">{{timeDisplay}}</div>' +
               '<button id="timer-control" ng-click="clickTimer()" ng-class="" class="btn btn-primary">{{buttonText()}}</button>',
     link: linkFunction
   };
