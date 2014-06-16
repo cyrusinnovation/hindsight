@@ -5,8 +5,8 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
 });
 
 hindsightApp.controller('ActivitiesCtrl', function($scope){
-  $scope.activities = [{name:'Check In', duration:1, active:false}, {name:'Gather Data', duration:20, active:false},
-                     {name:'Gain Insights', duration: 20, active:false}, {name:'Action Plan', duration:15, active:false}];
+  $scope.activities = [{name:'Check In', duration:5, active:false}, {name:'Topic Generation', duration:15, active:false},
+                     {name:'Topic Selection', duration: 5, active:false}, {name:'Topic Discussion', duration:15, active:false}, {name:'Action Planning', duration:20, active:false}];
 
   $scope.setActiveActivity = function(index) {
     for(var i=0; i < $scope.activities.length; i++){
