@@ -5,8 +5,11 @@ hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
 });
 
 hindsightApp.controller('ActivitiesCtrl', function($scope){
-  $scope.activities=[{name:'Check In', duration:1},{name:'Gather Data', duration:20},{name:'Gain Insights',duration: 20}, {name:'Action Plan', duration:10}]
-
+  $scope.activities=[{name:'Check In', duration:1, active:false}, {name:'Gather Data', duration:20, active:false},
+                     {name:'Gain Insights',duration: 20, active:false}, {name:'Action Plan', duration:15, active:false}]
+  $scope.setActiveActivity = function(){
+      alert("setting the active activity");
+  }
 });
 
 hindsightApp.directive("timer", function() {
@@ -29,6 +32,7 @@ hindsightApp.directive("timer", function() {
       var duration = scope.currentTimerDuration();
       if(duration <= 0) {
         scope.stopTimer();
+        scope.onEnd();
         alert("Time is up!");
       } else {
         var seconds = parseInt((duration/1000)%60);
@@ -64,8 +68,11 @@ hindsightApp.directive("timer", function() {
     scope.clickTimer = function() {
       if(scope.started){
         scope.pauseTimer();
+        scope.onStop();
+
       }else{
         scope.startTimer();
+        scope.onStart();
       }
     };
 
@@ -80,7 +87,10 @@ hindsightApp.directive("timer", function() {
     restrict: "E",
     scope: {
       duration: '=',
-      activity: '='
+      activity: '=',
+      onStart: '&onStart',
+      onStop: '&onStop',
+      onEnd: '&onEnd'
     },
     template: '<div id="activity-name">{{activity}}</div>' +
               '<div id="retro-time">{{timeDisplay}}</div>' +
