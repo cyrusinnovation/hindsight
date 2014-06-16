@@ -1,14 +1,19 @@
 'use strict';
 
 hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
-  $scope.retro = {name: 'Team Retro 1', date: '2014-06-21'};
+  $scope.retro = {name: 'Team Retrospective', date: '2014-06-21'};
 });
 
 hindsightApp.controller('ActivitiesCtrl', function($scope){
-  $scope.activities=[{name:'Check In', duration:1, active:false}, {name:'Gather Data', duration:20, active:false},
-                     {name:'Gain Insights',duration: 20, active:false}, {name:'Action Plan', duration:15, active:false}]
-  $scope.setActiveActivity = function(){
-      alert("setting the active activity");
+  $scope.activities = [{name:'Check In', duration:1, active:false}, {name:'Gather Data', duration:20, active:false},
+                     {name:'Gain Insights', duration: 20, active:false}, {name:'Action Plan', duration:15, active:false}];
+
+  $scope.setActiveActivity = function(index) {
+    for(var i=0; i < $scope.activities.length; i++){
+      $scope.activities[i].active = false;
+    }
+
+    $scope.activities[index].active = true;
   }
 });
 
@@ -17,7 +22,7 @@ hindsightApp.directive("timer", function() {
     scope.started = false;
     var defaultTimerDurationMs = parseInt(scope.duration)*60*1000;
     scope.timerDurationMs = defaultTimerDurationMs;
-    scope.message = (defaultTimerDurationMs/60/1000) + " minutes and 00 seconds";
+    scope.timeDisplay = (defaultTimerDurationMs/60/1000) + " minutes";
 
     scope.stopTimer = function(){
       clearInterval(scope.timerIntervalId);
@@ -26,7 +31,7 @@ hindsightApp.directive("timer", function() {
 
     scope.buttonText = function(){
         return scope.started ? "Pause Timer" : "Start Timer";
-    }
+    };
 
     scope.updateTime = function() {
       var duration = scope.currentTimerDuration();
@@ -68,11 +73,11 @@ hindsightApp.directive("timer", function() {
     scope.clickTimer = function() {
       if(scope.started){
         scope.pauseTimer();
-        scope.onStop();
+        scope.onPause();
 
       }else{
         scope.startTimer();
-        scope.onStart();
+        scope.onPlay();
       }
     };
 
@@ -88,8 +93,8 @@ hindsightApp.directive("timer", function() {
     scope: {
       duration: '=',
       activity: '=',
-      onStart: '&onStart',
-      onStop: '&onStop',
+      onPlay: '&onPlay',
+      onPause: '&onPause',
       onEnd: '&onEnd'
     },
     template: '<div id="activity-name">{{activity}}</div>' +

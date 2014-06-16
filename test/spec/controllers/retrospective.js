@@ -16,7 +16,7 @@ describe('Controller: RetrospectiveCtrl', function () {
   }));
 
   it('should initialize a fake temporary retro', function () {
-    expect(scope.retro.name).toBe("Team Retro 1");
+    expect(scope.retro.name).toBe("Team Retrospective");
   });
 
 });

@@ -43,14 +43,16 @@ describe('timer', function() {
       });
 
 
-      it('should update scope message with the time', function () {
+      it('should update scope timeDisplay with the time', function () {
+        expect(timerScope.timeDisplay).toBe("30 minutes");
+
         timerScope.startTimer();
         timerScope.updateTime();
-        expect(timerScope.message).toBe("30 minutes and 00 seconds");
+        expect(timerScope.timeDisplay).toBe("30 minutes and 00 seconds");
 
         this.clock.tick(1);
         timerScope.updateTime();
-        expect(timerScope.message).toBe("29 minutes and 59 seconds");
+        expect(timerScope.timeDisplay).toBe("29 minutes and 59 seconds");
       });
     });
 
@@ -63,11 +65,11 @@ describe('timer', function() {
       it('should stop the timer when paused', function(){
         this.clock.tick(1);
         timerScope.updateTime();
-        expect(timerScope.message).toBe("29 minutes and 59 seconds");
+        expect(timerScope.timeDisplay).toBe("29 minutes and 59 seconds");
 
         timerScope.pauseTimer();
         this.clock.tick(30000);
-        expect(timerScope.message).toBe("29 minutes and 59 seconds");
+        expect(timerScope.timeDisplay).toBe("29 minutes and 59 seconds");
       });
 
       it('should set started to false when the timer is paused', function () {

@@ -5,7 +5,7 @@
   <div ng-controller="ActivitiesCtrl as aCtrl">
       <div ng-repeat="activity in activities">
           <div ng-class="{'active-activity': activity.active, 'default-activity': !activity.active}">
-              <timer on-start="setActiveActivity()" activity="activity.name" duration="activity.duration"></timer>
+              <timer on-play="setActiveActivity($index)" activity="activity.name" duration="activity.duration"></timer>
           </div>
       </div>
 
