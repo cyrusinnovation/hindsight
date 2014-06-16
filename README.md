@@ -26,3 +26,10 @@ webdriver-manager start
 
 and finally, run the tests:  
 protractor tests/protractor.conf.js  
+
+
+To deploy, we are hosting on heroku and you must run:
+grunt build
+to write new dist/ files and then:
+git push heroku master
+to push the dist files to heroku.
