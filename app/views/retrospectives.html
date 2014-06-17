@@ -19,14 +19,27 @@
 
 
   <form name="new-retro" ng-submit="retroCtrl.addRetro()" role="form">
-    <div class="form-group">
-      <input ng-model="newRetro.name" placeholder="Enter a label" required/>
-    </div>
-    <div class="form-group">
-      <input ng-model="newRetro.date" placeholder="Date" type="date" required min={{minDate}} />
-    </div>
+    <fieldset>
+      <div class="row">
+        <div class="large-5 columns">
+          <label>Enter a label for your retrospective</label>
+          <input type="text" class="" ng-model="newRetro.name" placeholder="Iteration Retrospective" required/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-3 columns">
+          <label>Date of retrospective</label>
+          <input type="date" ng-model="newRetro.date" required min={{minDate}} />
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-1 columns">
+          <button id="new-retro-submit" type="submit" class="small button">Create</button>
+        </div>
+      </div>
+    </fieldset>
 
-    <button id="new-retro-submit" type="submit" class="btn btn-primary">Create</button>
+
   </form>
 
 </div>

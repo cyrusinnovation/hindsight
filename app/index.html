@@ -14,7 +14,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hindsight.css">
+    <link rel="stylesheet" href="styles/retrospective.css">
     <!-- endbuild -->
   </head>
   <body ng-app="hindsightApp">
@@ -25,14 +26,29 @@
     <!-- Add your site or application content here -->
     <div class="container" >
       <div class="header">
-        <ul class="nav navbar-nav nav-pills pull-right" role="navigation" ng-controller="MainCtrl">
-          <li ng-class="getClass('/')"><a ng-href="#">Home</a></li>
-          <li ng-class="getClass('/retrospectives')"><a ng-href="#/retrospectives">Retrospectives</a></li>
-          <li ng-class="getClass('/retrospective')"><a ng-href="#/retrospective">Start Retrospective</a></li>
-        </ul>
-        <h3 class="text-muted">hindsight</h3>
+        <nav class="top-bar" data-topbar role="navigation">
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="#">hindsight</a></h1>
+            </li>
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right" ng-controller="MainCtrl">
+              <li ng-class="getClass('/')"><a ng-href="#">Home</a></li>
+              <li ng-class="getClass('/retrospectives')"><a ng-href="#/retrospectives">Retrospectives</a></li>
+              <li ng-class="getClass('/retrospective')"><a ng-href="#/retrospective">Start Retrospective</a></li>
+            </ul>
+          </section>
+        </nav>
       </div>
-      <div ng-view></div>
+
+      <div class="view-content" ng-view></div>
+
+      <footer>
+        <ul>
+          <li>Brought to you by <a target="_blank" href="http://www.cyrusinnovation.com">Cyrus Innovation</a></li>
+        </ul>
+      </footer>
 
     </div>
 
@@ -56,18 +72,6 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>

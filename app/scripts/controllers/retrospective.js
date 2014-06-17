@@ -97,9 +97,11 @@ hindsightApp.directive("timer", function() {
       onPause: '&onPause',
       onEnd: '&onEnd'
     },
-    template: '<div id="activity-name">{{activity}}</div>' +
-              '<div id="retro-time">{{timeDisplay}}</div>' +
-              '<button id="timer-control" ng-click="clickTimer()" ng-class="" class="btn btn-primary">{{buttonText()}}</button>',
+    template: '<div class="timer-text">' +
+              '<div class="activity-name">{{activity}}</div>' +
+              '<div class="retro-time">{{timeDisplay}}</div>' +
+              '</div>' +
+              '<button class="timer-control button small" ng-click="clickTimer()" ng-class="">{{buttonText()}}</button>',
     link: linkFunction
   };
 });

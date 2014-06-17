@@ -1,0 +1,23 @@
+
+
+.activity {
+  width: 250px;
+  padding: 15px;
+  border: 1px solid #ffffff;
+
+  &.active-activity {
+    background-color: #a9d6fe;
+  }
+
+  &.default-activity {
+    background-color: #eeeeee;
+  }
+
+  .timer-text {
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-bottom: 0px;
+  }
+}
