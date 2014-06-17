@@ -10,7 +10,10 @@ bower install
 You may need to install Ruby and Compass (gem install compass).  
 If you have them, confirm things are working by running:   
 grunt test  
-grunt serve  
+grunt serve
+
+If your shell can't find grunt after the npm install, you need to install grunt-cli globally by running:
+npm install -g grunt-cli
 
 For integration tests, install protractor:  
 npm install -g protractor  
