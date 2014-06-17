@@ -2,7 +2,7 @@ describe('homepage', function() {
 
   it('should display the app name', function() {
     browser.get('/');
-    var appName = element(by.css('.header h3'));
+    var appName = element(by.css('.header h1'));
     expect(appName.getText()).toEqual('hindsight');
   });
 
