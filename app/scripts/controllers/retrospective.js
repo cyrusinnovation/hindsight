@@ -14,7 +14,7 @@ hindsightApp.controller('ActivitiesCtrl', function($scope){
     }
 
     $scope.activities[index].active = true;
-  }
+  };
 });
 
 hindsightApp.directive("timer", function() {
@@ -30,7 +30,7 @@ hindsightApp.directive("timer", function() {
     };
 
     scope.buttonText = function(){
-        return scope.started ? "Pause Timer" : "Start Timer";
+      return scope.started ? "Pause Timer" : "Start Timer";
     };
 
     scope.updateTime = function() {
