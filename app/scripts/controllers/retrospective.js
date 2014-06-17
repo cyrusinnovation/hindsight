@@ -1,7 +1,7 @@
 'use strict';
 
 hindsightApp.controller('RetrospectiveCtrl', function ($scope) {
-  $scope.retro = {name: 'Team Retrospective', date: '2014-06-21'};
+  $scope.retro = {label: 'Team Retrospective', start: '2014-06-21'};
 });
 
 hindsightApp.controller('ActivitiesCtrl', function($scope){

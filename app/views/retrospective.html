@@ -1,6 +1,6 @@
 <div ng-controller="RetrospectiveCtrl as rCtrl">
-  <h1>{{ retro.name }}</h1>
-  <h2>{{ retro.date }}</h2>
+  <h1>{{ retro.label }}</h1>
+  <h2>{{ retro.start }}</h2>
 
   <div ng-controller="ActivitiesCtrl as aCtrl">
       <div ng-repeat="activity in activities">

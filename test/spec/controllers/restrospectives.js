@@ -21,7 +21,7 @@ describe('Controller: RetrospectivesCtrl', function () {
   });
 
   it('should initialize a blank new retro', function () {
-    expect(scope.newRetro.name).toBe('');
+    expect(scope.newRetro.label).toBe('');
   });
 
   it('should set the min date for the datepicker', function () {
