@@ -16,8 +16,9 @@ describe('Controller: RetrospectivesCtrl', function () {
     });
   }));
 
-  it('should initialize an empty list of retros to the scope', function () {
-    expect(scope.retros.length).toBe(0);
+  it('should initialize a list of retros from the server', function () {
+    // COMING SOON
+    //expect(scope.retros.length).toBe(0);
   });
 
   it('should initialize a blank new retro', function () {
