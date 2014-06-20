@@ -3,7 +3,7 @@
 var hindsightApp = angular.module('hindsightApp', ['ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute']);
+  'ngRoute', 'config']);
 
 hindsightApp.config(function ($routeProvider) {
   $routeProvider

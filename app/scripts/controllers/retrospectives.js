@@ -1,7 +1,7 @@
 'use strict';
 
-hindsightApp.controller('RetrospectivesCtrl', function ($scope, $filter, $http) {
-  $http.get('http://localhost:3000/retrospective')
+hindsightApp.controller('RetrospectivesCtrl', function ($scope, $filter, $http, ENV) {
+  $http.get(ENV.apiEndpoint + '/retrospective')
     .then(function(result){
        $scope.retros = result.data;
     });
@@ -11,8 +11,7 @@ hindsightApp.controller('RetrospectivesCtrl', function ($scope, $filter, $http) 
   this.addRetro = function(){
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/retrospective',
-//      url: ENV.apiEndPoint + '/retrospective',
+      url: ENV.apiEndpoint + '/retrospective',
       params: {
         label: $scope.newRetro.label,
         start: $scope.newRetro.start
