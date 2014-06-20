@@ -12,9 +12,10 @@ hindsightApp.controller('ActivitiesCtrl', function($scope){
     for(var i=0; i < $scope.activities.length; i++){
       $scope.activities[i].active = false;
     }
-
     $scope.activities[index].active = true;
+//    $scope.audio1.playPause();
   };
+
 });
 
 hindsightApp.directive("timer", function() {
@@ -38,6 +39,7 @@ hindsightApp.directive("timer", function() {
       if(duration <= 0) {
         scope.stopTimer();
         scope.onEnd();
+        // TODO: play audio clip
         alert("Time is up!");
       } else {
         var seconds = parseInt((duration/1000)%60);

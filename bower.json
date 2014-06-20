@@ -15,6 +15,7 @@
     "angular-mocks": "1.2.15",
     "angular-scenario": "1.2.15",
     "jasmine-sinon": "~0.4.0",
-    "foundation": "zurb/bower-foundation#~5.2.3"
+    "foundation": "zurb/bower-foundation#~5.2.3",
+    "angular-media-player": "~0.5.5"
   }
 }

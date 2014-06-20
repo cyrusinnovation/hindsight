@@ -3,12 +3,14 @@
   <h2>{{ retro.start }}</h2>
 
   <div ng-controller="ActivitiesCtrl as aCtrl">
-      <div ng-repeat="activity in activities">
-          <div class="activity" ng-class="{'active-activity': activity.active, 'default-activity': !activity.active}">
-              <timer on-play="setActiveActivity($index)" activity="activity.name" duration="activity.duration"></timer>
-          </div>
+    <div ng-repeat="activity in activities">
+      <div class="activity" ng-class="{'active-activity': activity.active, 'default-activity': !activity.active}">
+        <timer on-play="setActiveActivity($index)" activity="activity.name" duration="activity.duration"></timer>
       </div>
-
+      <audio media-player="audio1" data-playlist="playlist1">
+        <source src="images/Ship_Bell-Mike_Koenig.mp3" type="audio/mp3">
+      </audio>
+    </div>
   </div>
 </div>
 
