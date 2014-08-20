@@ -3,6 +3,10 @@ hindsight
 
 Angular front-end to our Hindsight Application - a tool for running seamless Retrospectives  
 
+There are a couple install options below - one using vagrant so projects leave no trace on your laptop
+or you can do the manual install option.
+
+
 ## Vagrant Install
 
 Install [vagrant](https://www.vagrantup.com/downloads.html)
@@ -54,10 +58,6 @@ will make a .box file that you can put on the internets. Be sure to update the V
 
 ### Rational
 
-We're consultants and ambitious developers. We're not working one project at a time. If project A needs ruby 1.9 and mysql 4 and project B needs ruby 2.1.2 and mysql 5 
-
-![you're going to have a bad time.](http://planscope.io/blog/wp-content/uploads/2014/04/youre-going-to-have-a-bad-time.png "bad time")
-
 Vagrant does a few very things well
 
 - You can get up and running in minutes, regardless of your experience
@@ -107,13 +107,15 @@ Download the selenium server with:
 webdriver-manager update  
 (You may need to run 'sudo webdriver-manager update')  
 
+
+## Running the server and tests
+
 Check the integration tests pass by starting grunt server and starting the selenium server in separate terminal windows:  
 grunt serve  
 webdriver-manager start   
 
 and finally, run the tests:   
 protractor tests/protractor.conf.js  
-
 
 To deploy, we are hosting on heroku and you must run:
 grunt build
