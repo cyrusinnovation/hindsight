@@ -91,10 +91,7 @@ After cloning the code into a directory, cd into the directory and run:
 npm install  
 bower install
 
-You may need to install Ruby and Compass (gem install compass).  
-If you have them, confirm things are working by running:   
-grunt test  
-grunt serve
+You may need to install Ruby and Compass (using rvm: "rvm install ruby-2.1.1" and "gem install compass").
 
 If your shell can't find grunt after the npm install, you need to install grunt-cli globally by running:
 npm install -g grunt-cli
@@ -110,17 +107,21 @@ webdriver-manager update
 
 ## Running the server and tests
 
-Check the integration tests pass by starting grunt server and starting the selenium server in separate terminal windows:  
+Start the app:
+grunt serve
+
+Run the unit tests:
+grunt test
+
+Check the integration tests pass by starting grunt server and starting the selenium server in separate terminal windows:
 grunt serve  
 webdriver-manager start   
 
-and finally, run the tests:   
+and finally, run the integration tests:
 protractor tests/protractor.conf.js  
 
 To deploy, we are hosting on heroku and you must run:
 grunt build
-to write new dist/ files and then:
+to write new dist/ files and then commit and push the dist files to heroku:
 git commit -m "build"
-and then:
 git push heroku
-to push the dist files to heroku.
